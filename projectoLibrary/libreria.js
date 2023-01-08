@@ -40,21 +40,33 @@ $anadir.addEventListener('click', (e)=>{
     unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste)
     mylibrary.push(unnuevolibro)
     crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste)
-
+    $libreria.append(unacarta)
+})
+const $anadirfact = document.querySelector('.factaddbutton')
+$anadirfact.addEventListener('click', (e)=>{
+    const unacarta = document.createElement('div')
+    untitulo = 'Howarts School'
+    unautor = "Daniel Radcliffe"
+    unaspaginas = "69"
+    unloleiste = true
+    unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste)
+    mylibrary.push(unnuevolibro)
+    crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste)
+    unacarta.classList.add('carta')
     $libreria.append(unacarta)
 })
 function crearcarta(lacarta,titulo,autor,paginas,loleyo){
     const unp = document.createElement('p')
-    unp.innerText = titulo
+    unp.innerText = 'Libro: '+titulo
     const unp2 = document.createElement('p')
-    unp2.innerText = autor
+    unp2.innerText = 'Autor: '+autor
     const unp3 = document.createElement('p')
-    unp3.innerText = paginas
+    unp3.innerText = 'Paginas: '+paginas
     const unp4 = document.createElement('p')
     if(loleyo == true){
-        unp4.innerText = 'Si lo a leido'
+        unp4.innerText = 'Leido: ' + 'Si lo a leido'
     }else{
-        unp4.innerText = 'Aun no lo lee'
+        unp4.innerText = 'Leido: ' + 'Aun no lo lee'
     }
     lacarta.append(unp)
     lacarta.append(unp2)
