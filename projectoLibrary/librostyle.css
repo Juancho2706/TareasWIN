@@ -6,18 +6,34 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    gap: 20px;
-    grid-template-rows: 100px 1fr 100px;
+    grid-template-rows: 5% 90% 5%;
     min-height: 100vh;
+}
+.bottom{
+    background-color: #CBF1F5;
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 button{
     border: 2px solid;
 }
+.leido{
+    background-color: greenyellow;
+}
+.noleido{
+    background-color: red;
+}
 .libreria{
-    background-color: rgb(71, 40, 21);
     padding: 5px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px,33%));
+    grid-template-rows: repeat(auto-fit, minmax(150px,20%));
+    overflow: auto;
+    max-height: 100%;
 }
 .carta{
     margin: 20px;
@@ -25,10 +41,23 @@ button{
     border: 1px solid;
     border-radius: 5px;
     padding: 10px;
+    box-shadow: 2px 2px 2px;
 }
 .middle{
     min-width: 100%;
+    background-color:#A6E3E9;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2% 99%;
 }
 .middle>h3{
     text-align: center;
+}
+.top{
+    background-color: #71C9CE;
+    min-height: 100%;
+    min-width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }

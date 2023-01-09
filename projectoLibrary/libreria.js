@@ -40,6 +40,7 @@ $anadir.addEventListener('click', (e)=>{
     unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste)
     mylibrary.push(unnuevolibro)
     crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste)
+    unacarta.classList.add('carta')
     $libreria.append(unacarta)
 })
 const $anadirfact = document.querySelector('.factaddbutton')
@@ -62,14 +63,41 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo){
     unp2.innerText = 'Autor: '+autor
     const unp3 = document.createElement('p')
     unp3.innerText = 'Paginas: '+paginas
-    const unp4 = document.createElement('p')
-    if(loleyo == true){
-        unp4.innerText = 'Leido: ' + 'Si lo a leido'
+    const unbot = document.createElement('button')
+    unbot.classList.add('leido')
+    unbot.classList.add('noleido')
+    let siono = loleyo
+    if(siono == true){
+        unbot.classList.remove('noleido')
+        unbot.innerText ='Leido'
     }else{
-        unp4.innerText = 'Leido: ' + 'Aun no lo lee'
+        unbot.classList.remove('leido')
+        unbot.innerText = 'No Leido'
     }
+    unbot.addEventListener('click', (e)=>{
+        siono = !siono;
+        if(siono== true){
+            unbot.classList.remove('noleido')
+            unbot.classList.add('leido')
+            unbot.innerText ='Leido'
+        }else{
+            unbot.classList.remove('leido')
+            unbot.classList.add('noleido')
+            unbot.innerText = 'No Leido'
+        }
+    })
+    
     lacarta.append(unp)
     lacarta.append(unp2)
     lacarta.append(unp3)
-    lacarta.append(unp4)
+    lacarta.append(unbot)
+}
+function leido(unbool,e){
+    if(unbool== true){
+        e.classList.remove('noleido')
+        e.innerText ='Leido'
+    }else{
+        e.classList.remove('leido')
+        e.innerText = 'No Leido'
+    }
 }
