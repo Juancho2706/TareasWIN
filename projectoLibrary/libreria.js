@@ -92,12 +92,12 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo){
     lacarta.append(unp3)
     lacarta.append(unbot)
 }
-function leido(unbool,e){
-    if(unbool== true){
-        e.classList.remove('noleido')
-        e.innerText ='Leido'
-    }else{
-        e.classList.remove('leido')
-        e.innerText = 'No Leido'
-    }
-}
+// function leido(unbool,e){
+//     if(unbool== true){
+//         e.classList.remove('noleido')
+//         e.innerText ='Leido'
+//     }else{
+//         e.classList.remove('leido')
+//         e.innerText = 'No Leido'
+//     }
+// }
