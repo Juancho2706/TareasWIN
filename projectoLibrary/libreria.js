@@ -1,6 +1,6 @@
 let mylibrary = []
-
-function Book(titulo,autor,paginas,loleiste){
+let numeroindex = 0
+function Book(titulo,autor,paginas,loleiste,index){
     this.title = titulo
     this.author = autor
     this.pages = paginas
@@ -9,6 +9,7 @@ function Book(titulo,autor,paginas,loleiste){
     }else{
         this.itsread = false
     }
+    this.indice = index
 }
 
 function addBookToLibrary(){
@@ -37,7 +38,8 @@ $anadir.addEventListener('click', (e)=>{
     }else if(unloleiste == 'n'){
         unloleiste = false
     }
-    unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste)
+    indiceindex = mylibrary.length
+    unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste, indiceindex)
     mylibrary.push(unnuevolibro)
     crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste)
     unacarta.classList.add('carta')
@@ -50,13 +52,15 @@ $anadirfact.addEventListener('click', (e)=>{
     unautor = "Daniel Radcliffe"
     unaspaginas = "69"
     unloleiste = true
-    unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste)
+    indiceindex = mylibrary.length
+    unnuevolibro = new Book(untitulo,unautor,unaspaginas,unloleiste, indiceindex)
     mylibrary.push(unnuevolibro)
-    crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste)
+    crearcarta(unacarta,untitulo,unautor,unaspaginas,unloleiste,indiceindex)
     unacarta.classList.add('carta')
+    unacarta.setAttribute('id', indiceindex.toString())
     $libreria.append(unacarta)
 })
-function crearcarta(lacarta,titulo,autor,paginas,loleyo){
+function crearcarta(lacarta,titulo,autor,paginas,loleyo,indix){
     const unp = document.createElement('p')
     unp.innerText = 'Libro: '+titulo
     const unp2 = document.createElement('p')
@@ -64,6 +68,12 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo){
     const unp3 = document.createElement('p')
     unp3.innerText = 'Paginas: '+paginas
     const unbot = document.createElement('button')
+    const borrar = document.createElement('button')
+    borrar.innerText = 'X'
+    borrar.addEventListener('click', (e)=>{
+        const itemsoontodelete = document.getElementById(indix.toString())
+        itemsoontodelete.remove()
+    })
     unbot.classList.add('leido')
     unbot.classList.add('noleido')
     let siono = loleyo
@@ -86,11 +96,11 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo){
             unbot.innerText = 'No Leido'
         }
     })
-    
     lacarta.append(unp)
     lacarta.append(unp2)
     lacarta.append(unp3)
     lacarta.append(unbot)
+    lacarta.append(borrar)
 }
 // function leido(unbool,e){
 //     if(unbool== true){
